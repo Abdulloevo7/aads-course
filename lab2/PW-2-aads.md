@@ -98,7 +98,7 @@
 namespace lab {
 template <typename T>
 T max(T a, T b) {
-    return (a > b) ? a : b; // Одно сравнение — O(1)
+    return (a > b) ? a : b; 
 }
 }
 ```
@@ -112,23 +112,23 @@ private:
     T2 second;
 
 public:
-    Pair(const T1& f, const T2& s) : first(f), second(s) {}   // O(1)
-    T1 getFirst() const { return first; }                     // O(1)
-    T2 getSecond() const { return second; }                   // O(1)
-    void setFirst(const T1& f) { first = f; }                 // O(1)
-    void setSecond(const T2& s) { second = s; }               // O(1)
+    Pair(const T1& f, const T2& s) : first(f), second(s) {}  
+    T1 getFirst() const { return first; }                      
+    T2 getSecond() const { return second; }                    
+    void setFirst(const T1& f) { first = f; }                  
+    void setSecond(const T2& s) { second = s; }                
 };
 ```
 Листинг 2 — Шаблонный класс Pair<T1, T2>
 
 ```cpp
-int exampleA(const vector<int>& a) {            // O(n)
+int exampleA(const vector<int>& a) {            
     int sum = 0;
     for (size_t i = 0; i < a.size(); i++) sum += a[i];
     return sum;
 }
 
-int exampleB(const vector<int>& a) {            // O(n^2)
+int exampleB(const vector<int>& a) {           
     int count = 0;
     for (size_t i = 0; i < a.size(); i++)
         for (size_t j = 0; j < a.size(); j++)
@@ -136,20 +136,19 @@ int exampleB(const vector<int>& a) {            // O(n^2)
     return count;
 }
 
-int exampleC(int n) {                           // O(log n)
-    int count = 0;
+int exampleC(int n) {                           
     for (int i = 1; i < n; i *= 2) count++;
     return count;
 }
 
-int exampleD(int n) {                           // O(n log n)
+int exampleD(int n) {                           
     int count = 0;
     for (int i = 0; i < n; i++)
         for (int j = n; j > 0; j /= 2) count++;
     return count;
 }
 
-int exampleE(int n) {                           // O(sqrt(n))
+int exampleE(int n) {                          
     int count = 0;
     for (int i = 0; i * i < n; i++) count++;
     return count;
@@ -159,14 +158,14 @@ int exampleE(int n) {                           // O(sqrt(n))
 
 ```cpp
 template <typename T>
-int linearSearch(const vector<T>& arr, const T& value) {   // O(n)
+int linearSearch(const vector<T>& arr, const T& value) {   
     for (size_t i = 0; i < arr.size(); i++)
         if (arr[i] == value) return (int)i;
     return -1;
 }
 
 template <typename T>
-int binarySearch(const vector<T>& arr, const T& value) {   // O(log n)
+int binarySearch(const vector<T>& arr, const T& value) {  
     int left = 0, right = (int)arr.size() - 1;
     while (left <= right) {
         int mid = left + (right - left) / 2;
@@ -242,7 +241,7 @@ max<char>('a', 'z') = z
 
 ### Сравнение двух реализаций: линейный и бинарный поиск
 
-Поиск последнего элемента (худший случай), время усреднено по 1000 запусков:
+Поиск последнего элемента, то есть худший случай, время усреднено по 1000 запусков:
 
 | Размер массива | Линейный (мкс) | Бинарный (мкс) |
 |---|---|---|
