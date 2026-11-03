@@ -70,6 +70,8 @@
 
 **Ссылка на Git-репозиторий:** 
 
+https://github.com/Abdulloevo7/aads-course/blob/main/lab1/PW-1-aads.md
+
 
 
 ## Листинг программы
@@ -82,7 +84,7 @@ private:
     string author;
     int year;
 
-    static int bookCount; // Количество существующих объектов Book
+    static int bookCount; 
 
 public:
     Book(const string& title, const string& author, int year)
@@ -113,7 +115,7 @@ int Book::bookCount = 0;
 class Library {
 private:
     string name;
-    vector<Book*> books; // Агрегация: библиотека хранит указатели на книги
+    vector<Book*> books; 
 
 public:
     explicit Library(const string& name) : name(name) {
@@ -121,7 +123,6 @@ public:
     }
 
     ~Library() {
-        // Книги не удаляются: библиотека не владеет их временем жизни
         cout << "Закрыта библиотека: " << name << '\n';
     }
 
@@ -165,7 +166,7 @@ int main() {
         library.addBook(&book2);
         library.addBook(&book3);
         library.print();
-    } // Библиотека уничтожается, книги продолжают существовать
+    } 
 
     cout << "\nКниги после закрытия библиотеки:\n";
     book1.print();

@@ -6,7 +6,6 @@
 using namespace std;
 using namespace chrono;
 
-// ---------- Шаблонная функция (вариант 1): максимум из двух значений. O(1) ----------
 namespace lab {
 template <typename T>
 T max(T a, T b) {
@@ -14,7 +13,6 @@ T max(T a, T b) {
 }
 }
 
-// ---------- Шаблонный класс Pair<T1, T2> (вариант 1) ----------
 template <typename T1, typename T2>
 class Pair {
 private:
@@ -22,52 +20,50 @@ private:
     T2 second;
 
 public:
-    Pair(const T1& f, const T2& s) : first(f), second(s) {}      // O(1)
-    T1 getFirst() const { return first; }                        // O(1)
-    T2 getSecond() const { return second; }                      // O(1)
-    void setFirst(const T1& f) { first = f; }                    // O(1)
-    void setSecond(const T2& s) { second = s; }                  // O(1)
+    Pair(const T1& f, const T2& s) : first(f), second(s) {}       
+    T1 getFirst() const { return first; }                         
+    T2 getSecond() const { return second; }                       
+    void setFirst(const T1& f) { first = f; }                     
+    void setSecond(const T2& s) { second = s; }                   
 };
 
-// ---------- Примеры для анализа сложности ----------
-int exampleA(const vector<int>& a) {            // O(n)
+int exampleA(const vector<int>& a) {            
     int sum = 0;
     for (size_t i = 0; i < a.size(); i++) sum += a[i];
     return sum;
 }
-int exampleB(const vector<int>& a) {            // O(n^2)
+int exampleB(const vector<int>& a) {            
     int count = 0;
     for (size_t i = 0; i < a.size(); i++)
         for (size_t j = 0; j < a.size(); j++)
             if (a[i] == a[j]) count++;
     return count;
 }
-int exampleC(int n) {                           // O(log n)
+int exampleC(int n) {                           
     int count = 0;
     for (int i = 1; i < n; i *= 2) count++;
     return count;
 }
-int exampleD(int n) {                           // O(n log n)
+int exampleD(int n) {                           
     int count = 0;
     for (int i = 0; i < n; i++)
         for (int j = n; j > 0; j /= 2) count++;
     return count;
 }
-int exampleE(int n) {                           // O(sqrt(n))
+int exampleE(int n) {                         
     int count = 0;
     for (int i = 0; i * i < n; i++) count++;
     return count;
 }
 
-// ---------- Линейный и бинарный поиск ----------
 template <typename T>
-int linearSearch(const vector<T>& arr, const T& value) {         // O(n)
+int linearSearch(const vector<T>& arr, const T& value) {         
     for (size_t i = 0; i < arr.size(); i++)
         if (arr[i] == value) return (int)i;
     return -1;
 }
 template <typename T>
-int binarySearch(const vector<T>& arr, const T& value) {         // O(log n)
+int binarySearch(const vector<T>& arr, const T& value) {        
     int left = 0, right = (int)arr.size() - 1;
     while (left <= right) {
         int mid = left + (right - left) / 2;
@@ -78,7 +74,6 @@ int binarySearch(const vector<T>& arr, const T& value) {         // O(log n)
     return -1;
 }
 
-// ---------- Измерение времени ----------
 template <typename Func>
 long long measureTime(Func func) {
     auto start = high_resolution_clock::now();
@@ -87,7 +82,7 @@ long long measureTime(Func func) {
     return duration_cast<microseconds>(end - start).count();
 }
 
-volatile long long sink; // не даёт компилятору удалить измеряемый код
+volatile long long sink; 
 
 int main() {
     setlocale(LC_ALL, "");
