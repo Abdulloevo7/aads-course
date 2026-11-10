@@ -86,6 +86,8 @@
 
 **Ссылка на Git-репозиторий:** 
 
+https://github.com/Abdulloevo7/aads-course/blob/main/lab3/PW-3-aads.md
+
 ## Листинг программы
 
 Полный исходный код приведён в отдельном файле `main.cpp`.

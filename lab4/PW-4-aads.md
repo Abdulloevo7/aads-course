@@ -92,6 +92,8 @@
 
 **Ссылка на Git-репозиторий:** 
 
+https://github.com/Abdulloevo7/aads-course/blob/main/lab4/PW-4-aads.md
+
 ## Листинг программы
 
 Полный исходный код приведён в отдельном файле `main.cpp`.
